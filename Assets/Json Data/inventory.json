@@ -1,0 +1,655 @@
+{
+  "data": [
+    {
+      "mainCategoryName": "mySaved",
+      "mainCategoryImage": "/images/saved.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "subCategory": "all",
+          "items": []
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "favourites",
+      "mainCategoryImage": "/images/favourites.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "subCategory": "all",
+          "items": []
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "hotItems",
+      "mainCategoryImage": "/images/hotItems.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": true,
+      "subCategory": [
+        {
+          "subCategoryName": "all",
+          "subCategoryImage": "/images/all.png",
+          "width": 41,
+          "height": 41,
+          "items": [
+            {
+              "paymentType": "/payments/coin.png",
+              "price": 2299,
+              "icon": "/clothing/dress1.png"
+            },
+            {
+              "paymentType": "/payments/coin.png",
+              "price": 2399,
+              "icon": "/clothing/dress2.png"
+            },
+            {
+              "paymentType": "/payments/diamond.png",
+              "price": 3350,
+              "icon": "/clothing/dress3.png"
+            },
+            {
+              "paymentType": "/payments/coin.png",
+              "price": 2720,
+              "icon": "/clothing/dress4.png"
+            },
+            {
+              "paymentType": "/payments/coin.png",
+              "price": 3050,
+              "icon": "/clothing/dress5.png"
+            },
+            {
+              "paymentType": "/payments/diamond.png",
+              "price": 3999,
+              "icon": "/clothing/dress6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2899,
+              "icon": " /clothing/dress7.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3099,
+              "itemsImage": " /clothing/dress8.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2199,
+              "icon": " /hair/style1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2030,
+              "icon": " /hair/style2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3799,
+              "icon": " /hair/style3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2070,
+              "icon": " /hair/style4.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2199,
+              "icon": " /hair/style5.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2899,
+              "icon": " /hair/style6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2750,
+              "icon": " /hair/style7.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3700,
+              "icon": " /hair/style8.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3500,
+              "icon": " /hair/footwear1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2078,
+              "icon": " /hair/footwear2.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1999,
+              "icon": " /hair/footwear3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2330,
+              "icon": " /hair/footwear4.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2999,
+              "icon": " /hair/footwear5.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3100,
+              "icon": " /hair/footwear6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2299,
+              "icon": " /hair/footwear7.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2900,
+              "icon": " /hair/footwear8.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3399,
+              "icon": " /hair/footwear9.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3399,
+              "icon": " /hair/footwear10.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses2.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2575,
+              "icon": " /hair/glasses4.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3799,
+              "icon": " /hair/glasses5.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 4099,
+              "icon": " /hair/glasses6.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 4299,
+              "icon": " /jacket/jacket1.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3100,
+              "icon": " /jacket/jacket2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3599,
+              "icon": " /shirt/shirt1.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2999,
+              "icon": " /shirt/shirt2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3499,
+              "icon": " /shirt/shirt3.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3999,
+              "icon": " /shirt/shirt4.png"
+            }
+          ]
+        },
+        {
+          "subCategoryName": "clothing",
+          "subCategoryImage": " /images/clothing.png",
+          "width": 41,
+          "height": 41,
+          "items": [
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2299,
+              "icon": " /clothing/dress1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2399,
+              "icon": " /clothing/dress2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3350,
+              "icon": " /clothing/dress3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2720,
+              "icon": " /clothing/dress4.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3050,
+              "icon": " /clothing/dress5.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3999,
+              "icon": " /clothing/dress6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2899,
+              "icon": " /clothing/dress7.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3099,
+              "itemsImage": " /clothing/dress8.png"
+            }
+          ]
+        },
+        {
+          "subCategoryName": "hair",
+          "subCategoryImage": " /images/hair.png",
+          "width": 41,
+          "height": 41,
+          "items": [
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2199,
+              "icon": " /hair/style1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2030,
+              "icon": " /hair/style2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3799,
+              "icon": " /hair/style3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2070,
+              "icon": " /hair/style4.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2199,
+              "icon": " /hair/style5.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2899,
+              "icon": " /hair/style6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2750,
+              "icon": " /hair/style7.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3700,
+              "icon": " /hair/style8.png"
+            }
+          ]
+        },
+        {
+          "subCategoryName": "footwear",
+          "subCategoryImage": " /images/footwear.png",
+          "width": 41,
+          "height": 41,
+          "items": [
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3500,
+              "icon": " /hair/footwear1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2078,
+              "icon": " /hair/footwear2.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1999,
+              "icon": " /hair/footwear3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2330,
+              "icon": " /hair/footwear4.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2999,
+              "icon": " /hair/footwear5.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3100,
+              "icon": " /hair/footwear6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2299,
+              "icon": " /hair/footwear7.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2900,
+              "icon": " /hair/footwear8.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3399,
+              "icon": " /hair/footwear9.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3399,
+              "icon": " /hair/footwear10.png"
+            }
+          ]
+        },
+        {
+          "subCategoryName": "others",
+          "subCategoryImage": " /images/other.png",
+          "width": 41,
+          "height": 41,
+          "items": [
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses2.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2099,
+              "icon": " /hair/glasses3.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2575,
+              "icon": " /hair/glasses4.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3799,
+              "icon": " /hair/glasses5.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 4099,
+              "icon": " /hair/glasses6.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 4299,
+              "icon": " /jacket/jacket1.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3100,
+              "icon": " /jacket/jacket2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3599,
+              "icon": " /shirt/shirt1.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2999,
+              "icon": " /shirt/shirt2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3499,
+              "icon": " /shirt/shirt3.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3999,
+              "icon": " /shirt/shirt4.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "newArrival",
+      "mainCategoryImage": " /images/new.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3799,
+          "icon": " /coat/coat1.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3999,
+          "icon": " /coat/coat2.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3099,
+          "icon": " /glasses/glasses1.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3500,
+          "icon": " /glasses/glasses2.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3899,
+          "icon": " /glasses/glasses3.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 2999,
+          "icon": " /glasses/glasses4.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 4299,
+          "icon": " /jacket/jacket1.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 4099,
+          "icon": " /jacket/jacket2.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3599,
+          "icon": " /shirt/shirt1.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3150,
+          "icon": " /shirt/shirt2.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3750,
+          "icon": " /shirt/shirt3.png"
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "coat",
+      "mainCategoryImage": " /images/coat.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 2400,
+          "icon": " /coat/coat1.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 2999,
+          "icon": " /coat/coat2.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 2800,
+          "icon": " /coat/coat3.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3000,
+          "icon": " /coat/coat4.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3699,
+          "icon": " /coat/coat5.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 4099,
+          "icon": " /coat/coat6.png"
+        },
+        {
+          "paymentType": " /payments/diamond.png",
+          "price": 3099,
+          "icon": " /coat/coat7.png"
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "shirt",
+      "mainCategoryImage": " /images/shirt.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "subCategoryName": "all",
+          "items": [
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1500,
+              "icon": " /shirt/shirt1.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1800,
+              "icon": " /shirt/shirt2.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1999,
+              "icon": " /shirt/shirt3.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2299,
+              "icon": " /shirt/shirt4.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 2499,
+              "icon": " /shirt/shirt5.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1499,
+              "icon": " /shirt/shirt6.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 1799,
+              "icon": " /shirt/shirt7.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mainCategoryName": "jacket",
+      "mainCategoryImage": " /images/jacket.png",
+      "width": 41,
+      "height": 41,
+      "hasSubCategory": false,
+      "subCategory": [
+        {
+          "subCategoryName": "all",
+          "items": [
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 3099,
+              "icon": " /jacket/jacket1.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3599,
+              "icon": " /jacket/jacket2.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 3899,
+              "icon": " /jacket/jacket3.png"
+            },
+            {
+              "paymentType": " /payments/diamond.png",
+              "price": 4099,
+              "icon": " /jacket/jacket4.png"
+            },
+            {
+              "paymentType": " /payments/coin.png",
+              "price": 2800,
+              "icon": " /jacket/jacket5.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
