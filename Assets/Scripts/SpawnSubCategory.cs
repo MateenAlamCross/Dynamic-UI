@@ -33,17 +33,17 @@ public class SpawnSubCategory : MonoBehaviour
         Debug.Log("Sub Category");
         for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
         {
-            Debug.Log(GameManager.instance.rootModel.data.Count);
-            Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
+            // Debug.Log(GameManager.instance.rootModel.data.Count);
+            // Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
             if (GameManager.instance.rootModel.data[i].mainCategoryName == "hotItems")
             {
-                Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
+                // Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
                 int count = GameManager.instance.rootModel.data[i].subCategory.Count;
                 for (int j = 0; j < count; j++)
                 {
                     objectInstance = Instantiate(buttonTemplate, transform);
                     
-                    Debug.Log(GameManager.instance.rootModel.data[i].subCategory[j].subCategoryName);
+                    // Debug.Log(GameManager.instance.rootModel.data[i].subCategory[j].subCategoryName);
                     Texture2D myTexture = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].subCategoryImage) as Texture2D;
                     objectInstance.transform.GetComponent<Image>().sprite = Sprite.Create(myTexture,
                         new Rect(0, 0, myTexture.width, myTexture.height), new Vector2(0.5f, 0.5f));
@@ -51,18 +51,19 @@ public class SpawnSubCategory : MonoBehaviour
                     objectInstance.transform.GetComponent<Image>().enabled = true;
                     objectInstance.transform.GetComponent<Button>().enabled = true;
                     objectInstance.transform.gameObject.name = GameManager.instance.rootModel.data[i].subCategory[j].subCategoryName;
-                    objectInstance.SetActive(true);
-                    Debug.Log(objectInstance.activeSelf);
+                    //objectInstance.SetActive(true);
+                    // Debug.Log(objectInstance.activeSelf);
                 }
             }
         }
         Destroy(buttonTemplate);
-
+        Destroy(newButton);
     }
     public void DestroySubcategorySpawned()
     {
         foreach (Transform child in transform)
         {
+            Debug.Log(child.gameObject);
             Destroy(child.gameObject);
         }
     }

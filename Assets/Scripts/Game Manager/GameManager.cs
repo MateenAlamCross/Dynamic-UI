@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
                 rootModel = JsonConvert.DeserializeObject<RootModel>(jsonString);
                 for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
                 {
-                    Debug.Log(rootModel.data[i].mainCategoryName);
+                    //Debug.Log(rootModel.data[i].mainCategoryName);
                 }
                 // Debug.Log(rootModel);
                 // Debug.Log(rootModel.data);
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         //
         // Debug.Log(datum.mainCategoryName);
         var name = rootModel.data[0].mainCategoryName;
-        Debug.Log(name);
+        //Debug.Log(name);
     }
     private void ReadJSONFile()
      {
