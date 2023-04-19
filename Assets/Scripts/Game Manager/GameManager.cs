@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,18 +10,21 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public RawImage saved;
-    public Image img;
+    // public RawImage saved;
+    // public Image img;
 
+    
 
     string jsonURL= "https://mateenalamcross.github.io/DynamicUIApi/DynamicApi.json";
     
     string jsonString;
 
+    [SerializeField]
     public RootModel rootModel;
 
+    public RootObject jsonData;
 
-    public List<Datum> data;
+    // public List<Datum> dataList;
     private void OnEnable()
     {
         if (instance == null)
@@ -48,55 +52,112 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log(request.result);
                 
-                // jsonString = JsonHelper.GetArray<Game> (request.downloadHandler.text);
                 jsonString = request.downloadHandler.text;
                 Debug.Log(jsonString);
                 Debug.Log(jsonURL);
-                // var myjson = JsonHelper.ToJson(person);
+              
                 
                 rootModel = JsonConvert.DeserializeObject<RootModel>(jsonString);
+           
+                PostData();
                 for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
                 {
                     //Debug.Log(rootModel.data[i].mainCategoryName);
                 }
-                // Debug.Log(rootModel);
-                // Debug.Log(rootModel.data);
-                // Debug.Log(rootModel.data[0]);
-                // Debug.Log(rootModel.data[0].mainCategoryName);
-                // Debug.Log(rootModel.data[1].mainCategoryName);
-                // Debug.Log(rootModel.data[2].mainCategoryName);
-                // Texture2D myTexture = Resources.Load(rootModel.data[0].mainCategoryImage) as Texture2D;
-                // saved.texture = myTexture;
+              
 
             }
             else
             {
                 Debug.Log(request.error);
-                // Debug.Log(playerStat.data);
-                //
-                // playerStat = JsonUtility.FromJson<JSONDataModel.RootObject>(request.downloadHandler.text);
-                // Debug.Log(playerStat.data[0].mainCategoryName);
-
+              
             }
         }
     }
     public void PostData()
     {
-        // Datum datum = rootModel.data[0];
-        //
-        // Debug.Log(datum.mainCategoryName);
-        var name = rootModel.data[0].mainCategoryName;
-        //Debug.Log(name);
+        Debug.Log(rootModel.data.Count);
+        // Debug.Log(jsonData.data.Count);
+        // jsonData.data.Count = rootModel.data.Count;
+        // jsonData.data.Add(rootModel.data);
+        // jsonData.data.Append(rootModel.data.ToArray()); = rootModel.data.ToArray();
+        // jsonData.data = new List<Data>(rootModel.data.Count);
+        // gameData.data = new List<Data>(rootModel.data.Count);
+        // gameData.data = new Data[rootModel.data.Count];
+        jsonData.data = new Data[rootModel.data.Count];
+        Debug.Log(jsonData.data);
+        Debug.Log(jsonData.data.Length);
+        // int count = rootModel.data.Count;
+        // jsonData.data.Length = count;
+        // Debug.Log(gameData.data.Count);
+
+//        gameData.datalist = new Datum[myData.Count];
+        //  System.Convert.ToInt32(jsonData.data.Count);
+        //  jsonData.data.ToArray();
+        // Debug.Log(System.Convert.ToInt32(jsonData.data.Count));
+
+        
+        jsonData.data[0].mainCategoryName = rootModel.data[0].mainCategoryName.ToString();
+
+        for (int i = 0; i < rootModel.data.Count; i++)
+        {
+            Debug.Log(rootModel.data[i].mainCategoryName);
+            Debug.Log(i);
+            jsonData.data[i].mainCategoryName = rootModel.data[i].mainCategoryName.ToString();
+            jsonData.data[i].mainCategoryImage = rootModel.data[i].mainCategoryImage.ToString();
+            jsonData.data[i].height = rootModel.data[i].height;
+            jsonData.data[i].width = rootModel.data[i].width;
+            jsonData.data[i].hasSubcategory = rootModel.data[i].hasSubCategory;
+            //
+            // foreach (var VARIABLE in rootModel.data[i].subCategory)
+            // {
+            //     // jsonData.data[i].subCategory.Add((VARIABLE.items[i].paymentType.ToString()));
+            // }
+        }
+
     }
-    private void ReadJSONFile()
-     {
-         // Debug.Log(playerStat.data[0].mainCategoryName);
-         // Debug.Log(playerStat.data);
-     }
+
     
+    
+    [System.Serializable]
+    public class Item
+    {
+        public string paymentType;
+        public int price;
+        public string icon;
+        public string itemsImage;
+    }
+    [System.Serializable]
+    public class SubCategory
+    {
+        public string subCategory;
+        public List<Item> items;
+        public string subCategoryName;
+        public string subCategoryImage;
+        public int? width;
+        public int? height;
+        public string paymentType;
+        public int? price;
+        public string icon;
+    }
+    [System.Serializable]
+    public class Data
+    {
+        public string mainCategoryName;
+        public string mainCategoryImage;
+        public long width;
+        public long height;
+        public bool hasSubcategory;
+        // public List<SubCategory> subCategory;
+    }
+    [System.Serializable]
+    public class RootObject
+    {
+        // public List<Data> data;
+        public Data[] data;
+    }
+
 }
-
-
 
 
 

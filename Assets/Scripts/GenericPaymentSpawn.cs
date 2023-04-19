@@ -33,15 +33,6 @@ public class GenericPaymentSpawn : MonoBehaviour
 
        return instance;
    }
-   // public static  GenericPaymentSpawn GetInstance()
-   // {
-   //     if (instance == null)
-   //     {
-   //         instance = new GenericPaymentSpawn();
-   //     }
-   //
-   //     return instance;
-   // }
 
    
    public void DestroyAllSpawned()

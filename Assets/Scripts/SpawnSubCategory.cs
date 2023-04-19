@@ -24,8 +24,9 @@ public class SpawnSubCategory : MonoBehaviour
         // add a button component to the game object
         Button buttonComponent = newButton.AddComponent<Button>();
         newButton.AddComponent<Image>();
+        newButton.AddComponent<Outline>();
         newButton.transform.SetParent(GameObject.Find("Subcategory").transform);
-
+        // GameObject.Find("Subcategory").SetActive(true);
          GameObject buttonTemplate = transform.GetChild(0).gameObject;
         //buttonTemplate.SetActive(true);
         GameObject objectInstance;
@@ -66,5 +67,7 @@ public class SpawnSubCategory : MonoBehaviour
             Debug.Log(child.gameObject);
             Destroy(child.gameObject);
         }
+        // GameObject.Find("Subcategory").SetActive(false);
+
     }
 }

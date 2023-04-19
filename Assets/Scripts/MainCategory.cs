@@ -19,6 +19,7 @@ public class MainCategory : MonoBehaviour
         }
     }
 
+    [SerializeField]
     GameObject hotitems;
     GameObject hair;
     GameObject footwear;

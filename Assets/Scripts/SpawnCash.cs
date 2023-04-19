@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class SpawnCash : MonoBehaviour
 {
     public static SpawnCash instance;
+    [Header("Is Spawned")]
     public bool spawned ;
-
+    [Header("Payment Spawn")]
     public GameObject invetoryGameObject;
+
+    public RectTransform content;
     private void Awake()
     {
         if (instance == null)
@@ -33,6 +36,10 @@ public class SpawnCash : MonoBehaviour
         temp.z = GameObject.Find("All Inventory Objects").transform.position.z;
         
         GameObject.Find("All Inventory Objects").transform.position = temp;
+        
+        
+        // LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+
     }
 
     // public void SpawnPayment(string name)
@@ -147,26 +154,33 @@ public class SpawnCash : MonoBehaviour
                                         
                                         
                                         // Payment Icon Refrence Passing
-                                      Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                      .items[k].paymentType.ToString()) as Texture2D; 
-                                      objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                      var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
                                       
 
                                       //Price In term of Coin & Diamonds
-                                        objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
                                         
                                         // Passing Objects references which User will Buy 
-                                        Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
                                             .items[k].icon.ToString()) as Texture2D; 
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
                                         
                                         // Nameing the spawning Object In term of Coin  OR Diamond
                                         objectInstance.transform.gameObject.name = objectBuyIcon.name;
 
-                                        
-                                        objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                        objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                     }
                                 } 
                             }
@@ -218,27 +232,33 @@ public class SpawnCash : MonoBehaviour
                                         
                                         
                                         // Payment Icon Refrence Passing
-                                      Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                      .items[k].paymentType.ToString()) as Texture2D; 
-                                      objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                        var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
                                       
-                                     
 
                                       //Price In term of Coin & Diamonds
-                                        objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
                                         
                                         // Passing Objects references which User will Buy 
-                                        Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
                                             .items[k].icon.ToString()) as Texture2D; 
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
                                         
                                         // Nameing the spawning Object In term of Coin  OR Diamond
                                         objectInstance.transform.gameObject.name = objectBuyIcon.name;
 
-                                        
-                                        objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                        objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                     }
                                 } 
                             }
@@ -277,24 +297,33 @@ public class SpawnCash : MonoBehaviour
                                 objectInstance = Instantiate(buttonTemplate, transform);
 
                                 // Payment Icon Refrence Passing
-                              Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].paymentType.ToString()) as Texture2D; 
-                              objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                          
-                              
-                                //Price In term of Coin & Diamonds
-                                objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
-                                // Passing Objects references which User will Buy 
-                                Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].icon.ToString()) as Texture2D; 
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                
-                                // Nameing the spawning Object In term of Coin  OR Diamond
-                                objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                
-                                objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                     }
                 }
                Destroy(SpawnGameObject);
@@ -345,27 +374,33 @@ public class SpawnCash : MonoBehaviour
                                         
                                         
                                         // Payment Icon Refrence Passing
-                                      Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                      .items[k].paymentType.ToString()) as Texture2D; 
-                                      objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                         var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
                                       
-                                     
 
                                       //Price In term of Coin & Diamonds
-                                        objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
                                         
                                         // Passing Objects references which User will Buy 
-                                        Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
                                             .items[k].icon.ToString()) as Texture2D; 
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
                                         
                                         // Nameing the spawning Object In term of Coin  OR Diamond
                                         objectInstance.transform.gameObject.name = objectBuyIcon.name;
 
-                                        
-                                        objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                        objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                     }
                                 } 
                             }
@@ -414,27 +449,33 @@ public class SpawnCash : MonoBehaviour
                                         
                                         
                                         // Payment Icon Refrence Passing
-                                      Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                      .items[k].paymentType.ToString()) as Texture2D; 
-                                      objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                         var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
                                       
-                                     
 
                                       //Price In term of Coin & Diamonds
-                                        objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
                                         
                                         // Passing Objects references which User will Buy 
-                                        Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
                                             .items[k].icon.ToString()) as Texture2D; 
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
                                         
                                         // Nameing the spawning Object In term of Coin  OR Diamond
                                         objectInstance.transform.gameObject.name = objectBuyIcon.name;
 
-                                        
-                                        objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                        objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                     }
                                 } 
                             }
@@ -473,24 +514,33 @@ public class SpawnCash : MonoBehaviour
                                 objectInstance = Instantiate(buttonTemplate, transform);
 
                                 // Payment Icon Refrence Passing
-                              Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].paymentType.ToString()) as Texture2D; 
-                              objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                 var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                          
-                              
-                                //Price In term of Coin & Diamonds
-                                objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
-                                // Passing Objects references which User will Buy 
-                                Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].icon.ToString()) as Texture2D; 
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                
-                                // Nameing the spawning Object In term of Coin  OR Diamond
-                                objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                
-                                objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                     }
                 }
                Destroy(SpawnGameObject);
@@ -525,24 +575,33 @@ public class SpawnCash : MonoBehaviour
                                 objectInstance = Instantiate(buttonTemplate, transform);
 
                                 // Payment Icon Refrence Passing
-                              Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].paymentType.ToString()) as Texture2D; 
-                              objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                 var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                          
-                              
-                                //Price In term of Coin & Diamonds
-                                objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
-                                // Passing Objects references which User will Buy 
-                                Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].icon.ToString()) as Texture2D; 
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                
-                                // Nameing the spawning Object In term of Coin  OR Diamond
-                                objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                
-                                objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                     }
                 }
                Destroy(SpawnGameObject);
@@ -573,24 +632,33 @@ public class SpawnCash : MonoBehaviour
                                 objectInstance = Instantiate(buttonTemplate, transform);
 
                                 // Payment Icon Refrence Passing
-                              Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].paymentType.ToString()) as Texture2D; 
-                              objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                 var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                          
-                              
-                                //Price In term of Coin & Diamonds
-                                objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
-                                // Passing Objects references which User will Buy 
-                                Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].icon.ToString()) as Texture2D; 
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                
-                                // Nameing the spawning Object In term of Coin  OR Diamond
-                                objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                
-                                objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                     }
                 }
                Destroy(SpawnGameObject);
@@ -622,24 +690,33 @@ public class SpawnCash : MonoBehaviour
                                 objectInstance = Instantiate(buttonTemplate, transform);
 
                                 // Payment Icon Refrence Passing
-                              Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].paymentType.ToString()) as Texture2D; 
-                              objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                 var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                          
-                              
-                                //Price In term of Coin & Diamonds
-                                objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
-                                // Passing Objects references which User will Buy 
-                                Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].icon.ToString()) as Texture2D; 
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                
-                                // Nameing the spawning Object In term of Coin  OR Diamond
-                                objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                
-                                objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                     }
                 }
                Destroy(SpawnGameObject);
@@ -683,27 +760,33 @@ public class SpawnCash : MonoBehaviour
                                             
                                             
                                             // Payment Icon Refrence Passing
-                                          Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                          .items[k].paymentType.ToString()) as Texture2D; 
-                                          objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
-                                          
-                                         
+                                             var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
 
-                                          //Price In term of Coin & Diamonds
-                                            objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
-                                            
-                                            // Passing Objects references which User will Buy 
-                                            Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                                .items[k].icon.ToString()) as Texture2D; 
-                                            objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
-                                            
-                                            // Nameing the spawning Object In term of Coin  OR Diamond
-                                            objectInstance.transform.gameObject.name = objectBuyIcon.name;
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
+                                      
 
-                                            
-                                            objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                            objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                            objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                      //Price In term of Coin & Diamonds
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        
+                                        // Passing Objects references which User will Buy 
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                            .items[k].icon.ToString()) as Texture2D; 
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
+                                        
+                                        // Nameing the spawning Object In term of Coin  OR Diamond
+                                        objectInstance.transform.gameObject.name = objectBuyIcon.name;
+
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                         }
                                     } 
                                 }
@@ -752,27 +835,34 @@ public class SpawnCash : MonoBehaviour
                                         
                                         
                                         // Payment Icon Refrence Passing
-                                      Texture2D paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
-                                      .items[k].paymentType.ToString()) as Texture2D; 
-                                      objectInstance.transform.GetChild(0).GetComponent<RawImage>().texture = paymentTypeIcon;
+                                                // Payment Icon Refrence Passing
+                                             var paymentTypeIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                      .items[k].paymentType.ToString()) as Texture2D;
+                                      var paymentSprite = Sprite.Create(paymentTypeIcon, new Rect(0.0f,0.0f,paymentTypeIcon.width,paymentTypeIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+
+                                      objectInstance.transform.GetChild(1).GetComponent<Image>().sprite = paymentSprite;
                                       
-                                     
 
                                       //Price In term of Coin & Diamonds
-                                        objectInstance.transform.GetChild (1).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
+                                        objectInstance.transform.GetChild (2).GetComponent <Text> ().text = GameManager.instance.rootModel.data[i].subCategory[j].items[k].price.ToString();
                                         
                                         // Passing Objects references which User will Buy 
-                                        Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        // Texture2D objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
+                                        //     .items[k].icon.ToString()) as Texture2D; 
+                                        var objectBuyIcon = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j]
                                             .items[k].icon.ToString()) as Texture2D; 
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().texture = objectBuyIcon;
+                                        // var tex = Resources.Load<Texture2D>("Sprites/transparent");
+                                        var ObjectBuyIcon = Sprite.Create(objectBuyIcon, new Rect(0.0f,0.0f,objectBuyIcon.width,objectBuyIcon.height), new Vector2(0.5f,0.5f), 100.0f);
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().sprite = ObjectBuyIcon;
                                         
                                         // Nameing the spawning Object In term of Coin  OR Diamond
                                         objectInstance.transform.gameObject.name = objectBuyIcon.name;
 
-                                        
-                                        objectInstance.transform.GetChild(0).GetComponent<RawImage>().enabled = true;
-                                        objectInstance.transform.GetChild(1).GetComponent<Text>().enabled = true;
-                                        objectInstance.transform.GetChild(2).GetComponent<RawImage>().enabled = true;
+                                        objectInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+                                        objectInstance.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                                        objectInstance.transform.GetChild(2).GetComponent<Text>().enabled = true;
+                                        objectInstance.transform.GetChild(3).GetComponent<Image>().enabled = true;
                                     }
                                 } 
                             }
