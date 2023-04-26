@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class SpawnSubCategory : MonoBehaviour
@@ -34,26 +35,23 @@ public class SpawnSubCategory : MonoBehaviour
         Debug.Log("Sub Category");
         for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
         {
-            // Debug.Log(GameManager.instance.rootModel.data.Count);
-            // Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
+           
             if (GameManager.instance.rootModel.data[i].mainCategoryName == "hotItems")
             {
-                // Debug.Log(GameManager.instance.rootModel.data[i].mainCategoryName);
                 int count = GameManager.instance.rootModel.data[i].subCategory.Count;
                 for (int j = 0; j < count; j++)
                 {
                     objectInstance = Instantiate(buttonTemplate, transform);
-                    
-                    // Debug.Log(GameManager.instance.rootModel.data[i].subCategory[j].subCategoryName);
+
                     Texture2D myTexture = Resources.Load(GameManager.instance.rootModel.data[i].subCategory[j].subCategoryImage) as Texture2D;
+                    // Texture2D myTexture =  DownloadHandlerTexture.GetContent(request) as Texture2D;
                     objectInstance.transform.GetComponent<Image>().sprite = Sprite.Create(myTexture,
                         new Rect(0, 0, myTexture.width, myTexture.height), new Vector2(0.5f, 0.5f));
                     objectInstance.transform.GetComponent<Image>().SetNativeSize();
                     objectInstance.transform.GetComponent<Image>().enabled = true;
                     objectInstance.transform.GetComponent<Button>().enabled = true;
                     objectInstance.transform.gameObject.name = GameManager.instance.rootModel.data[i].subCategory[j].subCategoryName;
-                    //objectInstance.SetActive(true);
-                    // Debug.Log(objectInstance.activeSelf);
+                   
                 }
             }
         }

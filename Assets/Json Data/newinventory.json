@@ -35,7 +35,7 @@
       "subCategory": [
         {
           "subCategoryName": "all",
-          "subCategoryImage": "/images/all",
+          "subCategoryImage": "images/all",
           "width": 41,
           "height": 41,
           "items": [
@@ -524,7 +524,7 @@
       "mainCategoryImage": "images/coat",
       "width": 41,
       "height": 41,
-      "hasSubCategory": true,
+      "hasSubCategory": false,
       "subCategory": [
         {
           "paymentType": "payments/diamond",
@@ -571,44 +571,39 @@
       "hasSubCategory": false,
       "subCategory": [
         {
-          "subCategoryName": "all",
-          "items": [
-            {
-              "paymentType": "payments/coin",
-              "price": 1500,
-              "icon": "shirt/shirt 1"
-            },
-            {
-              "paymentType": "payments/coin",
-              "price": 1800,
-              "icon": "shirt/shirt 2"
-            },
-            {
-              "paymentType": "payments/coin",
-              "price": 1999,
-              "icon": "shirt/shirt 3"
-            },
-            {
-              "paymentType": "payments/diamond",
-              "price": 2299,
-              "icon": "shirt/shirt 4"
-            },
-            {
-              "paymentType": "payments/diamond",
-              "price": 2499,
-              "icon": "shirt/shirt 5"
-            },
-            {
-              "paymentType": "payments/coin",
-              "price": 1499,
-              "icon": "shirt/shirt 6"
-            },
-            {
-              "paymentType": "payments/coin",
-              "price": 1799,
-              "icon": "shirt/shirt 7"
-            }
-          ]
+          "paymentType": "payments/coin",
+          "price": 1500,
+          "icon": "shirt/shirt 1"
+        },
+        {
+          "paymentType": "payments/coin",
+          "price": 1800,
+          "icon": "shirt/shirt 2"
+        },
+        {
+          "paymentType": "payments/coin",
+          "price": 1999,
+          "icon": "shirt/shirt 3"
+        },
+        {
+          "paymentType": "payments/diamond",
+          "price": 2299,
+          "icon": "shirt/shirt 4"
+        },
+        {
+          "paymentType": "payments/diamond",
+          "price": 2499,
+          "icon": "shirt/shirt 5"
+        },
+        {
+          "paymentType": "payments/coin",
+          "price": 1499,
+          "icon": "shirt/shirt 6"
+        },
+        {
+          "paymentType": "payments/coin",
+          "price": 1799,
+          "icon": "shirt/shirt 7"
         }
       ]
     },
@@ -619,35 +614,31 @@
       "height": 41,
       "hasSubCategory": false,
       "subCategory": [
+
         {
-          "subCategoryName": "all",
-          "items": [
-            {
-              "paymentType": "payments/coin",
-              "price": 3099,
-              "icon": "jacket/jacket 1"
-            },
-            {
-              "paymentType": "payments/diamond",
-              "price": 3599,
-              "icon": "jacket/jacket 2"
-            },
-            {
-              "paymentType": "payments/diamond",
-              "price": 3899,
-              "icon": "jacket/jacket 3"
-            },
-            {
-              "paymentType": "payments/diamond",
-              "price": 4099,
-              "icon": "jacket/jacket 4"
-            },
-            {
-              "paymentType": "payments/coin",
-              "price": 2800,
-              "icon": "jacket/jacket 5"
-            }
-          ]
+          "paymentType": "payments/coin",
+          "price": 3099,
+          "icon": "jacket/jacket 1"
+        },
+        {
+          "paymentType": "payments/diamond",
+          "price": 3599,
+          "icon": "jacket/jacket 2"
+        },
+        {
+          "paymentType": "payments/diamond",
+          "price": 3899,
+          "icon": "jacket/jacket 3"
+        },
+        {
+          "paymentType": "payments/diamond",
+          "price": 4099,
+          "icon": "jacket/jacket 4"
+        },
+        {
+          "paymentType": "payments/coin",
+          "price": 2800,
+          "icon": "jacket/jacket 5"
         }
       ]
     }

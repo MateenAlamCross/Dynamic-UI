@@ -10,8 +10,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    // public RawImage saved;
-    // public Image img;
 
     
 
@@ -22,9 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public RootModel rootModel;
 
-    public RootObject jsonData;
 
-    // public List<Datum> dataList;
     private void OnEnable()
     {
         if (instance == null)
@@ -55,17 +51,9 @@ public class GameManager : MonoBehaviour
                 jsonString = request.downloadHandler.text;
                 Debug.Log(jsonString);
                 Debug.Log(jsonURL);
-              
-                
-                rootModel = JsonConvert.DeserializeObject<RootModel>(jsonString);
-           
-                PostData();
-                for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
-                {
-                    //Debug.Log(rootModel.data[i].mainCategoryName);
-                }
-              
 
+                rootModel = JsonConvert.DeserializeObject<RootModel>(jsonString);
+                
             }
             else
             {
@@ -74,88 +62,26 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void PostData()
-    {
-        Debug.Log(rootModel.data.Count);
-        // Debug.Log(jsonData.data.Count);
-        // jsonData.data.Count = rootModel.data.Count;
-        // jsonData.data.Add(rootModel.data);
-        // jsonData.data.Append(rootModel.data.ToArray()); = rootModel.data.ToArray();
-        // jsonData.data = new List<Data>(rootModel.data.Count);
-        // gameData.data = new List<Data>(rootModel.data.Count);
-        // gameData.data = new Data[rootModel.data.Count];
-        jsonData.data = new Data[rootModel.data.Count];
-        Debug.Log(jsonData.data);
-        Debug.Log(jsonData.data.Length);
-        // int count = rootModel.data.Count;
-        // jsonData.data.Length = count;
-        // Debug.Log(gameData.data.Count);
-
-//        gameData.datalist = new Datum[myData.Count];
-        //  System.Convert.ToInt32(jsonData.data.Count);
-        //  jsonData.data.ToArray();
-        // Debug.Log(System.Convert.ToInt32(jsonData.data.Count));
-
-        
-        jsonData.data[0].mainCategoryName = rootModel.data[0].mainCategoryName.ToString();
-
-        for (int i = 0; i < rootModel.data.Count; i++)
-        {
-            Debug.Log(rootModel.data[i].mainCategoryName);
-            Debug.Log(i);
-            jsonData.data[i].mainCategoryName = rootModel.data[i].mainCategoryName.ToString();
-            jsonData.data[i].mainCategoryImage = rootModel.data[i].mainCategoryImage.ToString();
-            jsonData.data[i].height = rootModel.data[i].height;
-            jsonData.data[i].width = rootModel.data[i].width;
-            jsonData.data[i].hasSubcategory = rootModel.data[i].hasSubCategory;
-            //
-            // foreach (var VARIABLE in rootModel.data[i].subCategory)
-            // {
-            //     // jsonData.data[i].subCategory.Add((VARIABLE.items[i].paymentType.ToString()));
-            // }
-        }
-
-    }
 
     
     
-    [System.Serializable]
-    public class Item
-    {
-        public string paymentType;
-        public int price;
-        public string icon;
-        public string itemsImage;
-    }
-    [System.Serializable]
-    public class SubCategory
-    {
-        public string subCategory;
-        public List<Item> items;
-        public string subCategoryName;
-        public string subCategoryImage;
-        public int? width;
-        public int? height;
-        public string paymentType;
-        public int? price;
-        public string icon;
-    }
-    [System.Serializable]
-    public class Data
-    {
-        public string mainCategoryName;
-        public string mainCategoryImage;
-        public long width;
-        public long height;
-        public bool hasSubcategory;
-        // public List<SubCategory> subCategory;
-    }
-    [System.Serializable]
-    public class RootObject
-    {
-        // public List<Data> data;
-        public Data[] data;
-    }
+    
+    
+    
+    
+    // public IEnumerator LoadImage()
+    // {
+    //     for (int i = 0; i < rootModel.data.Count; i++)
+    //     {
+    //         UnityWebRequest request = UnityWebRequestTexture.GetTexture(rootModel.data[i].subCategory);
+    //         yield return request.SendWebRequest();
+    //         if(request.isNetworkError || request.isHttpError) 
+    //             Debug.Log(request.error);
+    //         else
+    //             YourRawImage.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
+    //     }
+    //
+    // }
 
 }
 
