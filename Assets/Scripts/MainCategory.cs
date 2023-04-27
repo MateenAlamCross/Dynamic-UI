@@ -63,6 +63,7 @@ public class MainCategory : MonoBehaviour
                 SpawnCash.instance.DestroyAllSpawned();
                 SpawnCash.instance.canBeSpawn = true;
                 SpawnCash.instance.SpawnPayment(name);
+                SpawnCash.instance.StartCoroutine("SetInventoryViewSize");
             }
         }
     }
@@ -73,6 +74,7 @@ public class MainCategory : MonoBehaviour
         Debug.Log(SubCategoryName);
         SpawnCash.instance.canBeSpawn = true;
         SpawnCash.instance.SpawnPayment(MainCategoryName, SubCategoryName);
+        SpawnCash.instance.StartCoroutine("SetInventoryViewSize");
         // SpawnCash.instance.StartCoroutine("RectHeightUpdate");
     }
     

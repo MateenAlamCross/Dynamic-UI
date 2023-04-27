@@ -64,10 +64,29 @@ public class SpawnCash : MonoBehaviour
                                         new Vector2(0.5f, 0.5f), 100.0f);
 
                                 spawnedEntry.transform.GetChild(2).GetComponent<Text>().text = obj.price.ToString();
-                                StartCoroutine(GetRemoteTexture(obj.icon.ToString(), spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite));
+                              
+                                Texture2D img= new Texture2D(50,50);
+                                //StartCoroutine(GetRemoteTexture(obj.icon.ToString(),img));
+                                // var objImage =  img as Texture2D;
+                                // spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite = Sprite.Create(objImage,
+                                //     new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);
                                 // spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite = Sprite.Create(img,
                                     // new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);
-
+                                    
+                                    StartCoroutine(GetRemoteTexture(obj.icon.ToString()));
+                                    IEnumerator  GetRemoteTexture(string url)
+                                    {
+                                        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+                                        yield return request.SendWebRequest();
+                                        if(request.isNetworkError || request.isHttpError) 
+                                            Debug.Log(request.error);
+                                        else
+                                            img =  ((DownloadHandlerTexture) request.downloadHandler).texture;
+                                        Debug.Log(img);
+                             
+                                        spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite = Sprite.Create(img, 
+                                            new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);;
+                                    }
                             }
                         }
                     }
@@ -75,6 +94,7 @@ public class SpawnCash : MonoBehaviour
                 else
                 {
                     DestroyAllSubMenuItems();
+
                     foreach (var item in dataItem.subCategory)
                     {
                         GameObject spawnedEntry = Instantiate(invetoryGameObject,
@@ -85,35 +105,85 @@ public class SpawnCash : MonoBehaviour
                                 new Vector2(0.5f, 0.5f), 100.0f);
 
                         spawnedEntry.transform.GetChild(2).GetComponent<Text>().text = item.price.ToString();
-
-                        StartCoroutine(GetRemoteTexture(item.icon.ToString(), spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite));
                         
-                        // spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite = Sprite.Create(img,
-                            // new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);
+                        Texture2D img= new Texture2D(50,50);
+
+                        StartCoroutine(GetRemoteTexture(item.icon.ToString()));
+                        
+                        //  StartCoroutine(GetRemoteTexture(item.icon.ToString(),img));
+                        
+                         IEnumerator  GetRemoteTexture(string url)
+                         {
+                             UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+                             yield return request.SendWebRequest();
+                             if(request.isNetworkError || request.isHttpError) 
+                                 Debug.Log(request.error);
+                             else
+                                 img =  ((DownloadHandlerTexture) request.downloadHandler).texture;
+                             Debug.Log(img);
+                             
+                             spawnedEntry.transform.GetChild(3).GetComponent<Image>().sprite = Sprite.Create(img, 
+                                 new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);;
+                         }
+                         
                     }
                 }
             }
         }
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, gameObject.GetComponent<GridLayoutGroup>().preferredHeight);
     }
 
-    IEnumerator GetRemoteTexture(string url, Sprite img)
+    IEnumerator SetInventoryViewSize()
     {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-        yield return request.SendWebRequest();
-        if(request.isNetworkError || request.isHttpError) 
-            Debug.Log(request.error);
-        else{
-            // ImageComponent.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
+        yield return new WaitForSeconds(2f);
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, gameObject.GetComponent<GridLayoutGroup>().preferredHeight);
 
-            Texture2D tex = ((DownloadHandlerTexture) request.downloadHandler).texture;
-            Debug.Log("Tex: " + tex.name.ToString());
-            img = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f),100.0f);
-        }
     }
+    
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// IEnumerator  GetRemoteTexture(string url)
+// {
+//     UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+//     yield return request.SendWebRequest();
+//     if(request.isNetworkError || request.isHttpError) 
+//         Debug.Log(request.error);
+//     else
+//         img =  ((DownloadHandlerTexture) request.downloadHandler).texture;
+//     Debug.Log(img);
+//     objImage.sprite = Sprite.Create(img as Texture2D, 
+//         new Rect(0.0f, 0.0f, img.width, img.height), new Vector2(0.5f, 0.5f), 100.0f);
+//
+//
+//     // UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+//     // yield return request.SendWebRequest();
+//     // if(request.isNetworkError || request.isHttpError) 
+//     //     Debug.Log(request.error);
+//     // else{
+//     //     // ImageComponent.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
+//     //
+//     //     Texture2D tex = ((DownloadHandlerTexture) request.downloadHandler).texture;
+//     //     Debug.Log("Tex: " + tex.name.ToString());
+//     //     img = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f),100.0f);
+//     // }
+// }
 
 
 
