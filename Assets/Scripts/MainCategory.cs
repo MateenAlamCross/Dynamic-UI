@@ -8,9 +8,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public class MainCategory : MonoBehaviour
 {
-    // public Image Image;
     public static MainCategory instance;
 
+    public GameObject mainMenuItemPrefab;
     private void Awake()
     {
         if (instance == null)
@@ -19,222 +19,61 @@ public class MainCategory : MonoBehaviour
         }
     }
 
-    [SerializeField] GameObject hotitems;
-    GameObject hair;
-    GameObject footwear;
-    GameObject clothing;
-    GameObject shirt;
-    GameObject all;
-    GameObject coat;
-    GameObject others;
-    GameObject newArrival;
-    GameObject jacket;
-
     private void Start()
     {
-        StartCoroutine("SpawnMainCategory");
-        //SpawnCategory();
-    }
-
-    IEnumerator SpawnMainCategory()
-    {
-        yield return new WaitForSeconds(3f);
-        SpawnCategory();
+        Invoke("SpawnCategory", 3.0f);
     }
 
     public void SpawnCategory()
     {
-        GameObject newButton = new GameObject("Button");
-
-        // add a button component to the game object
-        Button buttonComponent = newButton.AddComponent<Button>();
-        newButton.AddComponent<Image>();
-        newButton.transform.SetParent(GameObject.Find("Main Category").transform);
-        GameObject buttonTemplate = transform.GetChild(0).gameObject;
-        GameObject objectInstance;
-
-        // Debug.Log(GameManager.instance.rootModel.data.Count);
-        for (int i = 0; i < GameManager.instance.rootModel.data.Count; i++)
+        //Spawn All the Main Category Items
+        foreach (var mItem in GameManager.instance.rootModel.data)
         {
-            objectInstance = Instantiate(buttonTemplate, transform);
-            Texture2D myTexture = Resources.Load(GameManager.instance.rootModel.data[i].mainCategoryImage) as Texture2D;
-
-            objectInstance.transform.GetComponent<Image>().sprite = Sprite.Create(myTexture,
-                new Rect(0, 0, myTexture.width, myTexture.height), new Vector2(0.5f, 0.5f));
-            objectInstance.transform.GetComponent<Image>().SetNativeSize();
-            objectInstance.transform.gameObject.name = GameManager.instance.rootModel.data[i].mainCategoryName;
+            GameObject mainMenuItem = Instantiate(mainMenuItemPrefab, GameObject.Find("Main Category").transform);
+            Texture2D img = Resources.Load(mItem.mainCategoryImage.ToString()) as Texture2D;
+            mainMenuItem.GetComponent<Image>().sprite = Sprite.Create(img, new Rect(0.0f, 0.0f, img.width, img.height),
+                new Vector2(0.5f, 0.5f), 100.0f);
+            mainMenuItem.gameObject.name = mItem.mainCategoryName;
+            mainMenuItem.GetComponent<Image>().SetNativeSize();
+            mainMenuItem.GetComponent<Button>().onClick.AddListener((() => OnClickSpawnItem(mItem.mainCategoryName.ToString())));
         }
-
-        Destroy(buttonTemplate);
-        //Debug.Log(buttonTemplate);
-        Destroy(newButton);
-        hotitems = GameObject.Find("hotItems");
-
-        shirt = GameObject.Find("shirt");
-        coat = GameObject.Find("coat");
-        newArrival = GameObject.Find("newArrival");
-        jacket = GameObject.Find("jacket");
-
-        hotitems.GetComponent<Button>().onClick.AddListener(OnPressHotItems);
-        shirt.GetComponent<Button>().onClick.AddListener(ShirtSpawned);
-        coat.GetComponent<Button>().onClick.AddListener(CoatSpawned);
-        newArrival.GetComponent<Button>().onClick.AddListener(NewArrivalSpawned);
-        jacket.GetComponent<Button>().onClick.AddListener(JacketSpawned);
     }
 
 
-    public void OthersSpawned()
+    public void OnClickSpawnItem(string name)
     {
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnOthers();
-        SpawnCash.instance.SpawnPayment("hotItems", "others");
-
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
+        foreach (var dataItem in GameManager.instance.rootModel.data)
+        {
+            if (dataItem.hasSubCategory)
+            {
+                foreach (var subItem in dataItem.subCategory)
+                {
+                    GameObject subCategoryItem = Instantiate(mainMenuItemPrefab, GameObject.Find("Subcategory").transform);
+                    Texture2D img = Resources.Load(subItem.subCategoryImage.ToString()) as Texture2D;
+                    subCategoryItem.GetComponent<Image>().sprite = Sprite.Create(img,new Rect(0.0f, 0.0f, img.width, img.height),
+                        new Vector2(0.5f, 0.5f), 100.0f);
+                    subCategoryItem.gameObject.name = subItem.subCategoryName;
+                    subCategoryItem.GetComponent<Image>().SetNativeSize();
+                    subCategoryItem.GetComponent<Button>().onClick.AddListener((() => AddListenerToSubCategory(name.ToString(),subItem.subCategoryName.ToString())));
+                }
+            }
+            
+            else
+            {
+                SpawnCash.instance.DestroyAllSpawned();
+                SpawnCash.instance.canBeSpawn = true;
+                SpawnCash.instance.SpawnPayment(name);
+            }
+        }
     }
-
-    public void NewArrivalSpawned()
-    {
-        SpawnSubCategory.instance.DestroySubcategorySpawned();
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        SpawnCash.instance.SpawnPayment("newArrival", null);
-
-//        SpawnCash.instance.SpawnNewArrival();
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-    }
-
-    public void OnPressHotItems()
+    
+    public void AddListenerToSubCategory(string MainCategoryName,string SubCategoryName)
     {
         SpawnCash.instance.DestroyAllSpawned();
-
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnPayment("hotItems");
-        SpawnCash.instance.SpawnPayment("hotItems", "all");
-
-        SpawnSubCategory.instance.DestroySubcategorySpawned();
-        SpawnSubCategory.instance.SpawnSubcategory();
-
-
-        all = GameObject.Find("all");
-        all.GetComponent<Button>().onClick.AddListener(AllSpawned);
-
-        clothing = GameObject.Find("clothing");
-        hair = GameObject.Find("hair");
-        footwear = GameObject.Find("footwear");
-        others = GameObject.Find("others");
-
-        clothing.GetComponent<Button>().onClick.AddListener(ClothingSpawned);
-        hair.GetComponent<Button>().onClick.AddListener(HairSpawned);
-        footwear.GetComponent<Button>().onClick.AddListener(FootwearSpawned);
-        others.GetComponent<Button>().onClick.AddListener(OthersSpawned);
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-
-    }
-
-
-
-    public void CoatSpawned()
-    {
-        SpawnSubCategory.instance.DestroySubcategorySpawned();
-        Debug.Log("Coat is Called");
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        SpawnCash.instance.SpawnCoat();
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-        // SpawnCash.instance.SpawnPayment("Coat");
-    }
-
-    public void ShirtSpawned()
-    {
-        SpawnSubCategory.instance.DestroySubcategorySpawned();
-
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        SpawnCash.instance.SpawnPayment("shirt", null);
-
-        // SpawnCash.instance.SpawnShirt();
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-    }
-
-    public void AllSpawned()
-    {
-        SpawnCash.instance.DestroyAllSpawned();
-        // Debug.Log("All is Called");
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnAll();
-        SpawnCash.instance.SpawnPayment("hotItems", "all");
-
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-    }
-
-    public void HairSpawned()
-    {
-        SpawnCash.instance.DestroyAllSpawned();
-
-        //SpawnSubCategory.instance.DestroySubcategorySpawned();
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnHair();
-        SpawnCash.instance.SpawnPayment("hotItems", "hair");
-
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-    }
-
-    public void GlassesSpawned()
-    {
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        SpawnCash.instance.SpawnGlasses();
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-    }
-
-    public void JacketSpawned()
-    {
-        SpawnSubCategory.instance.DestroySubcategorySpawned();
-
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        SpawnCash.instance.SpawnPayment("jacket", null);
-
-        // SpawnCash.instance.SpawnJacket();
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-
-    }
-
-    public void ClothingSpawned()
-    {
-        //SpawnSubCategory.instance.DestroySubcategorySpawned();
-        SpawnCash.instance.DestroyAllSpawned();
-        // Debug.Log("Clothing is Called");
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnClothing();
-        SpawnCash.instance.SpawnPayment("hotItems", "clothing");
-
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-
-    }
-
-    public void FootwearSpawned()
-    {
-        //SpawnSubCategory.instance.DestroySubcategorySpawned();
-        SpawnCash.instance.DestroyAllSpawned();
-        SpawnCash.instance.spawned = true;
-        // SpawnCash.instance.SpawnFootwear();
-        SpawnCash.instance.SpawnPayment("hotItems", "footwear");
-
-        SpawnCash.instance.StartCoroutine("RectHeightUpdate");
-
-        
-
+        Debug.Log(SubCategoryName);
+        SpawnCash.instance.canBeSpawn = true;
+        SpawnCash.instance.SpawnPayment(MainCategoryName, SubCategoryName);
+        // SpawnCash.instance.StartCoroutine("RectHeightUpdate");
     }
     
 }
@@ -249,9 +88,22 @@ public class MainCategory : MonoBehaviour
 
 
 
+// //Get The Spawn Buttons
+// hotitems = GameObject.Find("hotItems");
+// shirt = GameObject.Find("shirt");
+// coat = GameObject.Find("coat");
+// newArrival = GameObject.Find("newArrival");
+// jacket = GameObject.Find("jacket");
+//
+// //Add Button Component to All
+// hotitems.GetComponent<Button>().onClick.AddListener(OnClickSpawnItem("hotItems"));
+// shirt.GetComponent<Button>().onClick.AddListener(OnClickSpawnItem("shirt"));
+// coat.GetComponent<Button>().onClick.AddListener(OnClickSpawnItem("coat"));
+// newArrival.GetComponent<Button>().onClick.AddListener(OnClickSpawnItem("newArrival"));
+// jacket.GetComponent<Button>().onClick.AddListener(OnClickSpawnItem("jacket"));
 
 
-
+// SpawnCash.instance.SpawnFootwear();
 
 // foreach(GameObject gameObj in GameObject.FindObjectsOfType<GameObject>())
 // {
@@ -260,3 +112,25 @@ public class MainCategory : MonoBehaviour
 //         Destroy(gameObj);
 //     }
 // }
+
+
+        
+        
+// all = GameObject.Find("all");
+// all.GetComponent<Button>().onClick.AddListener(AllSpawned);
+//
+// clothing = GameObject.Find("clothing");
+// hair = GameObject.Find("hair");
+// footwear = GameObject.Find("footwear");
+// others = GameObject.Find("others");
+//
+// clothing.GetComponent<Button>().onClick.AddListener(ClothingSpawned);
+// hair.GetComponent<Button>().onClick.AddListener(HairSpawned);
+// footwear.GetComponent<Button>().onClick.AddListener(FootwearSpawned);
+// others.GetComponent<Button>().onClick.AddListener(OthersSpawned);
+
+
+// SpawnCash.instance.DestroyAllSpawned();
+// SpawnCash.instance.canBeSpawn = true;
+// SpawnCash.instance.SpawnPayment("hotItems", "others");
+// SpawnCash.instance.StartCoroutine("RectHeightUpdate");
