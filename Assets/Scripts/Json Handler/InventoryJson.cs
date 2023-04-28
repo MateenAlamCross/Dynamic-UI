@@ -3,17 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Datum
-{
-    public string mainCategoryName;
-    public string mainCategoryImage;
-    public int width;
-    public int height;
-    public bool hasSubCategory;
-    public List<SubCategory> subCategory;
-}
-
-[System.Serializable]
 public class Item
 {
     public string paymentType;
@@ -22,11 +11,6 @@ public class Item
     public string itemsImage;
 }
 
-[System.Serializable]
-public class RootModel
-{
-    public List<Datum> data;
-}
 [System.Serializable]
 public class SubCategory
 {
@@ -40,3 +24,21 @@ public class SubCategory
     public int? price;
     public string icon;
 }
+
+[System.Serializable]
+public class Datum  //Use Proper Namming
+{
+    public string mainCategoryName;
+    public string mainCategoryImage;
+    public int width;
+    public int height;
+    public bool hasSubCategory;
+    public List<SubCategory> subCategory;
+}
+
+[System.Serializable]
+public class RootModel
+{
+    public List<Datum> data;
+}
+// code flow -- must be in order
